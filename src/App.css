@@ -32,3 +32,8 @@
   background: none;
   border: 1px solid black;
 }
+
+.card-info-icon-container {
+  display: flex;
+  justify-content: end;
+}
