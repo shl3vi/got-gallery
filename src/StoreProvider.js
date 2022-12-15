@@ -8,6 +8,7 @@ export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     fetchingCharacters: true,
     characters: [],
+    lastDisplayedCharacterIndex: 0,
   });
 
   const init = async () => {
@@ -38,6 +39,13 @@ const reducer = (state, action) => {
       ...state,
       fetchingCharacters: false,
       characters: action.characters,
+      lastDisplayedCharacterIndex: 3,
+    };
+  }
+  if (action.type === storeActionTypes.SHOW_MORE_CHARACTERS) {
+    return {
+      ...state,
+      lastDisplayedCharacterIndex: state.lastDisplayedCharacterIndex + 4,
     };
   }
 };

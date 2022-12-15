@@ -1,3 +1,7 @@
+.App {
+  padding: 30px;
+}
+
 .fetching-message {
   text-align: center;
 }
@@ -17,4 +21,14 @@
 
 .card img {
   max-width: 100%;
+}
+
+.get-more-characters-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.get-more-characters-button {
+  background: none;
+  border: 1px solid black;
 }
