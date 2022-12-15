@@ -1,10 +1,12 @@
 import "./App.css";
+import { CardsContainer } from "./components/CardsContainer";
 import { useStore } from "./StoreProvider";
 
 function App() {
   const { state } = useStore();
   return (
     <div className="App" data-testid="galleryContainer">
+      <CardsContainer />
       {state.fetchingCharacters && (
         <div className="fetching-message">Loading...</div>
       )}

@@ -1,3 +1,16 @@
 .fetching-message {
   text-align: center;
 }
+
+.cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 5px;
+  row-gap: 1em;
+  padding: 30px;
+}
+
+.card {
+  padding: 5px;
+  border: 1px solid black;
+}
