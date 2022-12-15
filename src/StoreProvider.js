@@ -1,23 +1,28 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { storeActionTypes } from "./consts";
+import { fetchCharacters } from "./services/GotApiService";
 
 const storeContext = createContext(null);
 
 export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     fetchingCharacters: true,
-    characters: [
-      {
-        family: "House Targaryen",
-        firstName: "Daenerys",
-        fullName: "Daenerys Targaryen",
-        id: 0,
-        image: "daenerys.jpg",
-        imageUrl: "https://thronesapi.com/assets/images/daenerys.jpg",
-        lastName: "Targaryen",
-        title: "Mother of Dragons",
-      },
-    ],
+    characters: [],
   });
+
+  const init = async () => {
+    try {
+      const characters = await fetchCharacters();
+      dispatch({ type: storeActionTypes.FETCH_CHARACTERS, characters });
+    } catch (_) {
+      alert("failed to fetch GOT characters");
+    }
+  };
+
+  useEffect(() => {
+    init();
+  }, []);
+
   return (
     <storeContext.Provider value={{ state, dispatch }}>
       {children}
@@ -27,4 +32,12 @@ export const StoreProvider = ({ children }) => {
 
 export const useStore = () => useContext(storeContext);
 
-const reducer = (state, action) => {};
+const reducer = (state, action) => {
+  if (action.type === storeActionTypes.FETCH_CHARACTERS) {
+    return {
+      ...state,
+      fetchingCharacters: false,
+      characters: action.characters,
+    };
+  }
+};
