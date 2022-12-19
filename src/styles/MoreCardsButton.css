@@ -1,0 +1,9 @@
+.get-more-characters-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.get-more-characters-button {
+  background: none;
+  border: 1px solid black;
+}

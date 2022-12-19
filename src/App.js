@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/index.css";
 import { CardsContainer } from "./components/CardsContainer";
 import { Loader } from "./components/Loader";
 import { MoreCardsButton } from "./components/MoreCardsButton";

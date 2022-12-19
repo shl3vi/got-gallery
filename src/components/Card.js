@@ -1,5 +1,6 @@
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import { FaInfoCircle } from "react-icons/fa";
 
 export const Card = ({ character }) => {
   return (
@@ -18,9 +19,13 @@ const InfoButton = ({ character }) => {
 
   return (
     <div className="card-info-icon-container" data-testid="cardInfoIcon">
-      <span id={iId} data-tooltip-content={tooltipContent}>
-        <strong>i</strong>
-      </span>
+      <div>
+        <FaInfoCircle
+          id={iId}
+          data-tooltip-content={tooltipContent}
+          color={"lightgrey"}
+        />
+      </div>
       <Tooltip anchorId={iId} />
     </div>
   );
@@ -28,12 +33,16 @@ const InfoButton = ({ character }) => {
 
 const CharacterImage = ({ character }) => {
   return (
-    <div data-testid="cardImage">
+    <div className={"card-image-container"} data-testid="cardImage">
       <img alt={character.fullName} src={character.imageUrl} />
     </div>
   );
 };
 
 const CharacterName = ({ name }) => {
-  return <div data-testid="cardName">{name}</div>;
+  return (
+    <div className={"card-name-container"} data-testid="cardName">
+      {name}
+    </div>
+  );
 };
