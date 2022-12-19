@@ -1,8 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
-
-test('renders', () => {
-  render(<App />);
-  const galleryContainer = screen.getByTestId('galleryContainer');
-  expect(galleryContainer).toBeInTheDocument();
+test("GOT Gallery", () => {
+  // expect on load to have loader
+  // expect after fetching characters to present 4 characters
+  // expect after click to get 4 more
+  // expect at the end to have disabled button
+  // expect correct tooltip when hovering the info button
 });
